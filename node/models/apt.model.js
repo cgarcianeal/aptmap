@@ -3,23 +3,24 @@ const Schema = mongoose.Schema;
 
 
 const schema = new Schema({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    body: { type: String, required: false },
-    ingredients: { type: JSON, required: false },
-    instructions: { type: String, required: false },
-    image: { type: String, required: false },
-    tags: { type: String, required: true },
-    createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
-    createdDate: { type: Date, default: Date.now }});
+    name: { type: String, required: true },
+    address: { type: String, required: true },
+    xcord: { type: Number, required: true },
+    ycord: { type: Number, required: true },
+    region: { type: String, required: true },
+    wd: { type: Boolean, required: true },
+    dw: { type: Boolean, required: true },
+    ac: { type: Boolean, required: false },
+    pets: { type: Boolean, required: false },
+    parking: { type: Boolean, required: false },
+    createdDate: { type: Date, default: Date.now }
+});
 
-schema.index({createdDate:1, createdBy:1}, { unique: true });
+schema.index({ createdDate:1 }, { unique: true });
 
 schema.set('toJSON', { virtuals: true });
 
 module.exports =  {
-    Recipes: mongoose.model('Recipes', schema),
-    Concepts: mongoose.model('Concepts', schema),
-    Discussions: mongoose.model('Discussions', schema),
+    Apts: mongoose.model('Apts', schema)
 };
 

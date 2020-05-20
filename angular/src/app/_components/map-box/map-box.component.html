@@ -1,0 +1,29 @@
+<html>
+<body>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name"><mat-icon id="marker-icon">room</mat-icon> Apt Finder</h1>
+    <div style="flex: 1 1 auto"></div>
+    <button mat-raised-button routerLink="add"><mat-icon>add</mat-icon> Add</button>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #snav mode="side" class="snav">
+      <h1>Apts</h1>
+      <div *ngFor="let marker of markers">
+        <button class="snav-btn" mat-raised-button color="primary" (click)="flyTo(marker)">{{ marker.properties.name }}</button>
+        <ul>
+          <li>{{marker.properties.address}}</li>
+          <li>{{marker.properties.dw}}</li>
+          <li>{{marker.properties.wd}}</li>
+        </ul>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="map" id="map"></div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</body>
+</html>
