@@ -17,21 +17,25 @@ export class MapBoxComponent implements OnInit{
   /// default settings
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/outdoors-v9';
-  lat = 37.75;
-  lng = -122.41;
+  lat = 38.901937;
+  lng = -77.066926;
   message = 'Hello World!';
 
 
 
   // data
   source: any;
-  markers: GeoJson[];
+  markers;
 
   constructor(private mapService: MapService) {
   }
 
   ngOnInit() {
-    this.markers = this.mapService.getMarkers();
+    this.mapService.getApts().subscribe(res => {
+      console.log(res);
+      this.markers = [];
+      this.markers = res;
+    });
     this.initializeMap()
   }
 
@@ -118,12 +122,13 @@ export class MapBoxComponent implements OnInit{
           'text-size': 12,
           'text-transform': 'uppercase',
           'icon-image': 'castle-15',
-          'icon-size': 2,
+          'icon-size': 1.8,
           'icon-allow-overlap': true,
+          'text-allow-overlap': true,
           'text-offset': [0, 1.5]
         },
         paint: {
-          'text-color': '#f16624',
+          'text-color': 'blue',
           'text-halo-color': '#fff',
           'text-halo-width': 2
         }

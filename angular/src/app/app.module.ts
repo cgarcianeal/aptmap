@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MapBoxComponent } from './_components/map-box/map-box.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MapService} from './_services/map.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material-module';
 import {AppRoutingModule} from './app-routing.module';
 import { AddAptComponent } from './_components/add-apt/add-apt.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,15 @@ import { AddAptComponent } from './_components/add-apt/add-apt.component';
     MapBoxComponent,
     AddAptComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+    ],
   providers: [MapService],
   bootstrap: [AppComponent]
 })

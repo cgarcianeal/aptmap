@@ -20,3 +20,17 @@ html {
 .snav-btn {
   width: 100%;
 }
+
+.list-icon {
+  float: left;
+}
+
+.apt-listing {
+  margin: 5px;
+  display: block;
+  overflow: auto;
+}
+
+mat-divider {
+  margin: 5px 0 10px 0;
+}

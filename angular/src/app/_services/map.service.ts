@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 
 import { GeoJson } from '../_models/map';
 import * as mapboxgl from 'mapbox-gl';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class MapService {
@@ -36,12 +37,18 @@ export class MapService {
     }
   ];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     mapboxgl.accessToken = environment.mapbox.accessToken
   }
 
-  getMarkers() {
-    return this.apts;
+  addApt(apt) {
+    console.log('service');
+
+    return this.http.post(`http://localhost:3030/apt/addapt`, apt);
+  }
+
+  getApts() {
+    return this.http.get(`http://localhost:3030/apt/getapts`);
   }
 
   /*

@@ -37,9 +37,22 @@ async function getApts(){
 
     let apt = await Apts.find({});
 
+    let geoApt = [];
+
+    apt.forEach(e => {
+       geoApt.push({
+           "type": "Feature",
+           "geometry": {
+               "type": "Point",
+               "coordinates": [e.xcord, e.ycord]
+           },
+           "properties": e
+       });
+    });
+
     return new Promise((resolve, reject) => {
         setTimeout(()=>{
-            resolve(apt);
+            resolve(geoApt);
         },10);
 
     });

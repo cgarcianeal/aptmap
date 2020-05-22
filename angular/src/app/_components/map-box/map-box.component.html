@@ -9,15 +9,28 @@
 
   <mat-sidenav-container>
     <mat-sidenav #snav mode="side" class="snav">
-      <h1>Apts</h1>
-      <div *ngFor="let marker of markers">
+      <h2 align="center">Apt List</h2>
+      <div class="apt-listing" *ngFor="let marker of markers">
+        <mat-divider></mat-divider>
         <button class="snav-btn" mat-raised-button color="primary" (click)="flyTo(marker)">{{ marker.properties.name }}</button>
-        <ul>
-          <li>{{marker.properties.address}}</li>
-          <li>{{marker.properties.dw}}</li>
-          <li>{{marker.properties.wd}}</li>
+        <ul style="list-style: none">
+          <li><a href="{{marker.properties.url}}" target="_blank">{{marker.properties.address}}</a></li>
+          <li *ngIf="marker.properties.price" STYLE="color: darkgreen">${{marker.properties.price}}</li>
+          <li *ngIf="marker.properties.studio">Studio</li>
+          <li *ngIf="!marker.properties.studio">1 Bed</li>
+          <li class="list-icon" *ngIf="marker.properties.wd"><mat-icon>local_laundry_service</mat-icon></li>
+          <li class="list-icon" *ngIf="marker.properties.dw"><mat-icon>kitchen</mat-icon></li>
+          <li class="list-icon" *ngIf="marker.properties.ac"><mat-icon>waves</mat-icon></li>
+          <li class="list-icon" *ngIf="marker.properties.pets"><mat-icon>pets</mat-icon></li>
+          <li class="list-icon" *ngIf="marker.properties.parking"><mat-icon>local_parking</mat-icon></li>
+
         </ul>
+
       </div>
+      <br>
+      <br>
+      <br>
+      <br>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="map" id="map"></div>

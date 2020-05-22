@@ -1,9 +1,21 @@
 mat-card {
-  height: 400px;
+  display: block;
+  overflow: auto;
+  margin: 0 15%;
 }
 
 body {
-
-  margin: 20px 15%;
-  background-color: red;
+  margin: 0;
+  background-color: #dcdcdc;
 }
+
+mat-form-field, mat-checkbox {
+  float: left;
+  clear: both;
+}
+
+.add-section {
+  float: left;
+  margin: 10px;
+}
+
